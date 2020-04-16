@@ -1,0 +1,29 @@
+/* Js練習 */
+
+.midashi-class{
+    color: red;
+}
+
+.midashi-class-ura{
+    color: red;
+    opacity: 0.4;
+}
+
+
+/* お名前占い */
+
+.sec2{
+    background-color: cornflowerblue;
+    width: 50%;
+    padding: 5px 15px;
+}
+.namae{
+    size: 40px;
+    height: 20px;
+}
+.botan{
+    padding: 5px 10px;
+    background: rgb(253, 253, 253);
+    color: cornflowerblue;
+    box-shadow: 1px 1px darkgray;
+}
