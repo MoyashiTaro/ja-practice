@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- <div id="checkbox">
+        <p id="scroll">スクロール量：<span class="ans1"></span></p>
+        <p id="w_h">ウィンドウの高さ：<span class="ans1"></span></p>
+        <p id="bg1_int">背景1が動き始める位置：<span class="ans1"></span> 動いたら→<span class="ans2"></span></p>
+        <p id="bg2_int">背景２が動き始める位置：<span class="ans1"></span> 動いたら→<span class="ans2"></span></p>
+        <p id="bg3_int">背景3が動き始める位置：<span class="ans1"></span> 動いたら→<span class="ans2"></span></p>
+    </div> -->
+    <div class="parallax bg_1"></div>
+    <div class="content">
+        <h1>ここはコンテンツ1</h1>
+    </div>
+    <div class="parallax bg_2"></div>
+    <div class="content">
+        <h1>ここはコンテンツ2</h1>
+
+    </div>
+    <div class="parallax bg_3"></div>
+    <div class="content">
+        <h1>ここはコンテンツ3</h1>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            var bg1_top = $(".bg_1").offset().top;
+            var bg2_top = $(".bg_2").offset().top;
+            var bg3_top = $(".bg_3").offset().top;
+
+            var win_h = $(window).height();
+            var start_bg1 = bg1_top - win_h;
+            var start_bg2 = bg2_top - win_h;
+            var start_bg3 = bg3_top - win_h;
+
+            $("#bg1_int span.ans1").text(start_bg1);
+            $("#bg2_int span.ans1").text(start_bg2);
+            $("#bg3_int span.ans1").text(start_bg3);
+            $("#w_h span.ans1").text(win_h);
+
+
+            $(window).scroll(function () {
+                var y = $(this).scrollTop();
+
+                //チェック用
+                $("#scroll span").text(y);
+
+                if (y >= start_bg1) {
+                    $("#bg1_int span.ans2").text("動いた");
+                    $('.bg_1').css('background-position-y', -(y - bg1_top) * 0.2 + 'px');
+                } else {
+                    $("#bg1_int span.ans2").text("元の位置");
+                }
+                if (y > start_bg2) {
+                    $("#bg2_int span.ans2").text("動いた");
+                    $('.bg_2').css('background-position-y', - (y - bg2_top) * 0.2 + 'px');
+                } else {
+                    $("#bg2_int span.ans2").text("ウィンドウより下");
+                }
+                if (y > start_bg3) {
+                    $("#bg3_int span.ans2").text("動いた");
+                    $('.bg_3').css('background-position-y', - (y - bg3_top) * 0.2 + 'px');
+
+                } else {
+                    $("#bg3_int span.ans2").text("ウィンドウより下");
+                }
+
+            });
+        });
+    </script>
+</body>
+</html>
